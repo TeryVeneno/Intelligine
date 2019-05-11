@@ -11,11 +11,11 @@ import java.awt.Canvas;
 import intelligine.input_engine.Mouse;
 
 
-public class Window extends JFrame {
+public class Window extends Canvas {
 
   private static final long serialVersionUID = 42l;
 
-  //private JFrame frame;
+  private JFrame frame;
   private Scene_Manager sm;
   private Drawer drawer;
 
@@ -24,7 +24,6 @@ public class Window extends JFrame {
   private static boolean is_running;
   private final double update_speed = 60;
   int frames, updates, time;
-  private boolean buffered = false;
 
 
   private Thread loop;
@@ -39,30 +38,22 @@ public class Window extends JFrame {
     this.sm = sm;
 
     Dimension size = new Dimension(width,height);
-    //frame = new JFrame(title);
-    setTitle(title);
+    frame = new JFrame(title);
+    frame.setTitle(title);
     setPreferredSize(size);
     setSize(size);
-    //frame.setSize(size);
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    //frame.add(this);
-    setResizable(false);
+    frame.setSize(size);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.add(this);
+    frame.setResizable(false);
     setFocusable(true);
-    pack();
+    frame.pack();
   }
 
   /** Displays the window. */
   public void display () {
-    setVisible(true);
-    while(!isVisible()) {}
-    while(isVisible() && !buffered) {
-      try {
-        createBufferStrategy(buffer_size);
-        buffered = true;
-      } catch(Exception e) {
-        Debug.log_error(e.getMessage());
-      }
-    }
+    createBufferStrategy(buffer_size);
+    frame.setVisible(true);
     is_running = true;
     drawer = new Drawer(this);
     start_input_listeners();
@@ -95,16 +86,16 @@ public class Window extends JFrame {
 
   /** Closes the window. */
   public void close () {
-    dispose();
+    frame.dispose();
     System.exit(0);
   }
 
   public void set_fullscreen (boolean fullscreen) {
     if (fullscreen && !is_running) {
-      dispose();
-      setUndecorated(true);
-      setExtendedState(JFrame.MAXIMIZED_BOTH);
-      setVisible(true);
+      frame.dispose();
+      frame.setUndecorated(true);
+      frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+      frame.setVisible(true);
     }
     width = getWidth(); height = getHeight();
   }

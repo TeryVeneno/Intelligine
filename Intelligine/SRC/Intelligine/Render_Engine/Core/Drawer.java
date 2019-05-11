@@ -24,7 +24,7 @@ public class Drawer {
     g.drawString(str, x, y);
   }
 
-  public void fillRect (int x, int y, int sx, int sy) {
+  public void fill_rect (int x, int y, int sx, int sy) {
     g.fillRect(x, y, sx, sy);
   }
 
