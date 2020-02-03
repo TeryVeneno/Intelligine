@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 public class Mouse extends Input_Codes implements MouseListener, MouseMotionListener {
 
-  private static ArrayList<Integer> pressed_buttons = new ArrayList<Integer>();
-  private static ArrayList<Integer> down_buttons = new ArrayList<Integer>();
+  private static ArrayList<Integer> pressed_buttons = new ArrayList<>();
+  private static ArrayList<Integer> down_buttons = new ArrayList<>();
 
   private static int x, y;
 
@@ -25,9 +25,9 @@ public class Mouse extends Input_Codes implements MouseListener, MouseMotionList
   public void mouseReleased (MouseEvent e) {
     int button = e.getButton();
     if (pressed_buttons.indexOf(button) != -1)
-      pressed_buttons.remove(pressed_buttons.indexOf(button));
+      pressed_buttons.remove((Integer) button);
     if (down_buttons.indexOf(button) != -1)
-      down_buttons.remove(down_buttons.indexOf(button));
+      down_buttons.remove((Integer) button);
   }
 
   public void mouseDragged (MouseEvent e) {
@@ -49,7 +49,7 @@ public class Mouse extends Input_Codes implements MouseListener, MouseMotionList
   // Game Access
   public boolean is_button_pressed (int button) {
       if ((pressed_buttons.indexOf(button) != -1)) {
-        pressed_buttons.remove(pressed_buttons.indexOf(button));
+        pressed_buttons.remove((Integer) button);
         return true;
       }
       return false;

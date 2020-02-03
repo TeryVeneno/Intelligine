@@ -51,9 +51,6 @@ public class Line2D {
     if (c3 < 0 && c4 < 0) {
       return false;
     }
-    if (c3 > 0 && c4 > 0) {
-      return false;
-    }
-    return true;
+    return !(c3 > 0) || !(c4 > 0);
   }
 }

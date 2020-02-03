@@ -10,8 +10,7 @@ public class ResourceLoader {
 
   public static BufferedImage load_image (String path) {
       try {
-        BufferedImage img = ImageIO.read(new File(path));
-        return img;
+          return ImageIO.read(new File(path));
       } catch(Exception e) {
         Debug.log_error(e.getMessage());
       }

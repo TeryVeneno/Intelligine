@@ -13,7 +13,7 @@ public class Snow extends Scene {
   Image[] images = new Image[600];
   int[] xs = new int[600];
   int[] ys = new int[600];
-  int y = 200, x = 100, cx = 0, cy = 0, sp_x = 0, sp_y = 0;;
+  int y = 200, x = 100, cx = 0, cy = 0, sp_x = 0, sp_y = 0;
 
   String coords = "0, 0";
   Sprite_Sheet sheet;

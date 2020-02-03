@@ -5,11 +5,11 @@ import java.awt.Color;
 
 
 public class Main extends Scene_Manager {
-  private static final long serialVersionUID = 42l;
+  private static final long serialVersionUID = 42L;
 
   private static Window win;
 
-  private static final int scene_id = 0;;
+  private static final int scene_id = 0;
 
   public Main (String title, int width, int height, int buffer_size) {
     win = this.create_window(title, width, height, buffer_size, this);

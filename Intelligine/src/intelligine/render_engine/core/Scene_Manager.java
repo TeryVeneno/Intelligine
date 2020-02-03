@@ -6,7 +6,7 @@ import java.awt.Color;
 
 public class Scene_Manager {
 
-  private ArrayList<Scene> scenes = new ArrayList<Scene>();
+  private ArrayList<Scene> scenes = new ArrayList<>();
   private Scene current_scene;
   private Window win;
 
@@ -55,6 +55,6 @@ public class Scene_Manager {
   }
 
   private boolean is_scene_open () {
-    return ((current_scene == null) ? false : true);
+    return (current_scene != null);
   }
 }

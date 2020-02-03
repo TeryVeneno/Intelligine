@@ -18,9 +18,9 @@ public class Collider2D {
   public int get_length () {return lines.length;}
 
   public boolean intersecting (Collider2D cl) {
-    for (int s = 0; s < lines.length; s++) {
+    for (Line2D line : lines) {
       for (int i = 0; i < cl.get_length(); i++) {
-        if (lines[s].intersecting(cl.get_line(i))) {
+        if (line.intersecting(cl.get_line(i))) {
           return true;
         }
       }

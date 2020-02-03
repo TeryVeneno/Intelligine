@@ -36,7 +36,7 @@ public abstract class Game_Object {
   public boolean destroyed () {return is_destroyed;}
   public boolean has_physics () {return has_physics_body;}
 
-  public void set_image (Image img) {img = new Image(img.get_raw_image());}
+  public void set_image (Image img) {this.img = new Image(img.get_raw_image());}
   public void set_physics (Physics_Body pb) {body = pb;}
   public void set_do_draw (boolean d) {do_draw = d;}
 

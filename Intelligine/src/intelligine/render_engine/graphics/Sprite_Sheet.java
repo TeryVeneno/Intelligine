@@ -16,8 +16,7 @@ public class Sprite_Sheet {
 
   public BufferedImage get_sprite_image (int y, int x) {
     try {
-      BufferedImage ret = img.getSubimage(x*sx, y*sy, sx, sy);
-      return ret;
+      return img.getSubimage(x*sx, y*sy, sx, sy);
     } catch(Exception e) {
       Debug.log_error("SpriteSheet <Failed to Acquire SubImage>");
     }

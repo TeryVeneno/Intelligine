@@ -13,7 +13,7 @@ import intelligine.input_engine.Mouse;
 
 public class Window extends Canvas {
 
-  private static final long serialVersionUID = 42l;
+  private static final long serialVersionUID = 42L;
 
   private JFrame frame;
   private Scene_Manager sm;
@@ -102,34 +102,32 @@ public class Window extends Canvas {
 
   /** The main loop. */
   private void loop () {
-    loop = new Thread () {
-      public void run () {
-        double last_time = System.nanoTime();
-        double delta = 0;
-        final double ns = 1e9/update_speed;
+    loop = new Thread(() -> {
+      double last_time = System.nanoTime();
+      double delta = 0;
+      final double ns = 1e9/update_speed;
 
-        double start = System.currentTimeMillis();
-        int next = 1;
-        while(is_running) {
-          double now_time = System.nanoTime();
-          double now = (System.currentTimeMillis()-start)/1000;
-          delta += (now_time-last_time)/ns;
-          last_time = now_time;
-          while(delta >= 1) {
-            sm.render();
-            update();
-            delta--;
-          }
+      double start = System.currentTimeMillis();
+      int next = 1;
+      while(is_running) {
+        double now_time = System.nanoTime();
+        double now = (System.currentTimeMillis()-start)/1000;
+        delta += (now_time-last_time)/ns;
+        last_time = now_time;
+        while(delta >= 1) {
+          sm.render();
+          update();
+          delta--;
+        }
 
-          if (now >= next) {
-            next++;
-            time++;
-            frames = 0;
-            updates = 0;
-          }
+        if (now >= next) {
+          next++;
+          time++;
+          frames = 0;
+          updates = 0;
         }
       }
-    }; loop.start();
+    }); loop.start();
   }
 
   Drawer get_drawer () {

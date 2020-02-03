@@ -6,8 +6,8 @@ import java.awt.event.*;
 
 public class Input extends Input_Codes  implements KeyListener {
 
-  private ArrayList<Integer> pressed_keys = new ArrayList<Integer>();
-  private ArrayList<Integer> down_keys = new ArrayList<Integer>();
+  private ArrayList<Integer> pressed_keys = new ArrayList<>();
+  private ArrayList<Integer> down_keys = new ArrayList<>();
 
   public void keyPressed (KeyEvent e) {
     int key = e.getKeyCode();
@@ -20,9 +20,9 @@ public class Input extends Input_Codes  implements KeyListener {
   public void keyReleased (KeyEvent e) {
     int key = e.getKeyCode();
     if (pressed_keys.indexOf(key) != -1)
-      pressed_keys.remove(pressed_keys.indexOf(key));
+      pressed_keys.remove((Integer) key);
     if (down_keys.indexOf(key) != -1)
-      down_keys.remove(down_keys.indexOf(key));
+      down_keys.remove((Integer) key);
   }
 
   // UNUSED
@@ -31,7 +31,7 @@ public class Input extends Input_Codes  implements KeyListener {
   // Game Access
   public boolean is_key_pressed (int key) {
     if ((pressed_keys.indexOf(key) != -1)) {
-      pressed_keys.remove(pressed_keys.indexOf(key));
+      pressed_keys.remove((Integer) key);
       return true;
     }
     return false;
